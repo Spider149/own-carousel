@@ -1,0 +1,45 @@
+:root {
+    --width: 0;
+    --margin: 0;
+}
+
+.own-carousel__container {
+    position: relative;
+    overflow: hidden;
+}
+
+.own-carousel__control {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.own-carousel {
+    display: flex;
+    user-select: none;
+}
+
+.own-carousel__item {
+    flex-shrink: 0;
+    overflow: hidden;
+    flex-basis: var(--width);
+    min-height: 200px;
+}
+
+.own-carousel__item:not(:first-child) {
+    margin-left: var(--margin);
+}
+
+.own-carousel__item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.own-1 .own-carousel{
+    height: 200px;
+}
+
+.own-2 .own-carousel{
+    height: 230px;
+}
