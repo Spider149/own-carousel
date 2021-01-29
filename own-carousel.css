@@ -3,22 +3,18 @@
     --margin: 0;
 }
 
-.own-carousel__container {
+.own-carousel__outer {
     position: relative;
     overflow: hidden;
+    margin: 0 auto;
 }
 
-.own-carousel__control {
-    margin-top: 40px;
-    text-align: center;
-}
-
-.own-carousel {
+.own-carousel{
     display: flex;
-    user-select: none;
 }
 
 .own-carousel__item {
+    user-select: none;
     flex-shrink: 0;
     overflow: hidden;
     flex-basis: var(--width);
@@ -36,10 +32,7 @@
     pointer-events: none;
 }
 
-.own-1 .own-carousel{
-    height: 200px;
-}
-
-.own-2 .own-carousel{
-    height: 230px;
+.own-carousel__control {
+    margin-top: 40px;
+    text-align: center;
 }
