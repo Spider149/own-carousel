@@ -129,7 +129,7 @@ Object.prototype.ownCarousel = function (options) {
             ); //get the x-axis of transform3d
             let currentIndex = -currentMove / this.step;
 
-            let x = (e.type = "touchmove" ? e.touches[0].clientX : e.clientX); //get current coordinate
+            let x = e.type === "touchmove" ? e.touches[0].clientX : e.clientX; //get current coordinate
             let distanceMoved = x - currentPos;
             if (loop) {
                 if (currentIndex <= 0) {
@@ -159,7 +159,7 @@ Object.prototype.ownCarousel = function (options) {
                         currentMove + distanceMoved
                     }px,0,0)`;
             }
-            currentPos = e.touches[0].clientX || e.clientX;
+            currentPos = x;
         };
 
         this.checkIndex = (currentMove) => {
@@ -203,7 +203,8 @@ Object.prototype.ownCarousel = function (options) {
         // i had to create carouselOuter because carousel will be hidden when slide is working
     }
     if (mouseWheel) {
-        this.carouselOuter.addEventListener("mousewheel", (e) => {
+        this.carouselOuter.addEventListener("wheel", (e) => {
+            e.preventDefault();
             if (e.deltaY > 0) this.moveSlide(-1);
             else this.moveSlide(1);
         });
