@@ -1,5 +1,5 @@
 Object.prototype.ownCarousel = function (options) {
-    const { itemPerRow, itemWidth, loop = true, responsive, draggable = true } = options;
+    const { itemPerRow, itemWidth, loop = true, responsive={}, draggable = true, mousewheel = false } = options;
     this.carousel = this.querySelector(".own-carousel");
     this.carouselOuter = this.querySelector(".own-carousel__outer");
     this.itemWidthBig = this.itemWidth = itemWidth;
@@ -62,94 +62,95 @@ Object.prototype.ownCarousel = function (options) {
         }
     }
 
-    let moveNext = () => {
-        this.moveSlide(1);
-    }
-    let movePrev = () => {
+    this.querySelector(".control__prev").addEventListener("click", ()=>{
         this.moveSlide(-1);
-    }
+    });
+    this.querySelector(".control__next").addEventListener("click", ()=>{
+        this.moveSlide(1);
+    });
 
-    this.querySelector(".control__prev").addEventListener("click", movePrev);
-    this.querySelector(".control__next").addEventListener("click", moveNext);
+    if (draggable) {
+        let firstPos = currentPos = 0;
 
-    let dragStartHandle = (e) => {
-        e.preventDefault();
-        this.carousel.style.transition = "none";
-        if (e.type === 'touchstart') {
-            currentPos = e.touches[0].clientX;
-            document.addEventListener("touchmove", dragHandle);
-            document.addEventListener("touchend", dragEndHandle);
-        }
-        else {
-            this.carouselOuter.style.cursor = "grab";
-            currentPos = e.clientX;
-            document.addEventListener("mousemove", dragHandle);
-            document.addEventListener("mouseup", dragEndHandle);
-        }
-        firstPos = currentPos;
-    }
-
-    let dragHandle = (e) => {
-        let currentMove = parseFloat(this.carousel.style.transform.slice(12));
-        let currentIndex = -currentMove / this.step;
-        if (loop) {
-            if (currentIndex <= 0) {
-                this.index = this.numberOfItem;
-                this.translateSlide();
-            }
-            else if (currentIndex >= this.numberOfItem + this.itemPerRow) {
-                this.index = this.itemPerRow;
-                this.translateSlide();
+        let dragStartHandle = (e) => {
+            e.preventDefault();
+            this.carousel.style.transition = "none";
+            if (e.type === 'touchstart') {
+                currentPos = e.touches[0].clientX;
+                document.addEventListener("touchmove", dragHandle);
+                document.addEventListener("touchend", dragEndHandle);
             }
             else {
-                if (e.type === 'touchmove') this.carousel.style.transform = `translate3d(${currentMove + e.touches[0].clientX - currentPos}px,0,0)`;
-                else this.carousel.style.transform = `translate3d(${currentMove + e.clientX - currentPos}px,0,0)`;
+                this.carouselOuter.style.cursor = "grab";
+                currentPos = e.clientX;
+                document.addEventListener("mousemove", dragHandle);
+                document.addEventListener("mouseup", dragEndHandle);
             }
+            firstPos = currentPos;
         }
-        else {
-            if (currentIndex < 0 || (currentIndex > this.numberOfItem - this.itemPerRow)) {
-                currentPos = e.clientX || e.touches[0].clientX;
+    
+        let dragHandle = (e) => {
+            let currentMove = parseFloat(this.carousel.style.transform.slice(12));
+            let currentIndex = -currentMove / this.step;
+            let distanceMoved = (e.touches[0].clientX - currentPos) || (e.clientX - currentPos);
+            if (loop) {
+                if (currentIndex <= 0) {
+                    this.index = this.numberOfItem;
+                    this.translateSlide();
+                }
+                else if (currentIndex >= this.numberOfItem + this.itemPerRow) {
+                    this.index = this.itemPerRow;
+                    this.translateSlide();
+                }
+                else this.carousel.style.transform = `translate3d(${currentMove + distanceMoved}px,0,0)`;
             }
-            if (e.type === 'touchmove') this.carousel.style.transform = `translate3d(${currentMove + e.touches[0].clientX - currentPos}px,0,0)`;
-            else this.carousel.style.transform = `translate3d(${currentMove + e.clientX - currentPos}px,0,0)`;
-
+            else {
+                if (currentIndex < 0 || (currentIndex > this.numberOfItem - this.itemPerRow)) this.carousel.style.transform = `translate3d(${currentMove + distanceMoved / 5}px,0,0)`;
+                else this.carousel.style.transform = `translate3d(${currentMove + distanceMoved}px,0,0)`;
+            }
+            currentPos = e.touches[0].clientX || e.clientX;
+        }
+    
+        this.checkIndex = (currentMove) => {
+            let temp = currentMove;
+            while (temp >= this.step) {
+                temp -= this.step;
+            }
+            if ((temp > 50 && firstPos - currentPos > 0) || (this.step - temp < 50 && firstPos - currentPos < 0)) return Math.ceil(currentMove / this.step);
+            return Math.floor(currentMove / this.step);
+        }
+    
+        let dragEndHandle = (e) => {
+            if (e.type === "touchend") {
+                document.removeEventListener("touchmove", dragHandle);
+                document.removeEventListener("touchend", dragEndHandle);
+            }
+            else {
+                document.removeEventListener("mousemove", dragHandle);
+                document.removeEventListener("mouseup", dragEndHandle);
+                this.carouselOuter.style.cursor = "auto";
+            }
+            let currentMove = parseFloat(this.carousel.style.transform.slice(12));
+            this.index = this.checkIndex(-currentMove);
+            if (!loop) {
+                if (this.index > this.numberOfItem - this.itemPerRow) this.index = this.numberOfItem - this.itemPerRow;
+                if (this.index < 0) this.index = 0;
+            }
+            this.carousel.style.transition = "all 0.25s";
+            this.translateSlide();
         }
 
-        if (e.type === 'touchmove') currentPos = e.touches[0].clientX;
-        else currentPos = e.clientX;
-    }
-
-    this.checkIndex = (currentMove) => {
-        let temp = currentMove;
-        while (temp >= this.step) {
-            temp -= this.step;
-        }
-        if ((temp > 50 && firstPos - currentPos > 0) || (this.step - temp < 50 && firstPos - currentPos < 0)) return Math.ceil(currentMove / this.step);
-        return Math.floor(currentMove / this.step);
-    }
-
-    let dragEndHandle = (e) => {
-        if (e.type === "touchend") {
-            document.removeEventListener("touchmove", dragHandle);
-            document.removeEventListener("touchend", dragEndHandle);
-        }
-        else {
-            document.removeEventListener("mousemove", dragHandle);
-            document.removeEventListener("mouseup", dragEndHandle);
-            this.carouselOuter.style.cursor = "auto";
-        }
-        let currentMove = parseFloat(this.carousel.style.transform.slice(12));
-        this.index = this.checkIndex(-currentMove);
-        this.carousel.style.transition = "all 0.25s";
-        this.translateSlide();
-    }
-    if (draggable) {
         this.carouselOuter.addEventListener("mousedown", dragStartHandle);
         this.carouselOuter.addEventListener("touchstart", dragStartHandle);
     }
-}
+    if(mousewheel) {
+        this.carouselOuter.addEventListener("mousewheel",(e)=>{
+            if(e.deltaY>0) this.moveSlide(-1);
+            else this.moveSlide(1);
+        })
+    }
 
-let firstPos = currentPos = 0;
+}
 
 function debounce(fn, delay) {
     let id = null;

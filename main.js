@@ -7,6 +7,7 @@ document.querySelector(".own-1").ownCarousel({
         600: [2, 49],
         400: [1, 100]
     },
+    mousewheel: true,
 });
 
 document.querySelector(".own-2").ownCarousel({
@@ -17,5 +18,7 @@ document.querySelector(".own-2").ownCarousel({
         700: [2, 49],
         500: [1, 100]
     },
-
+    loop: false,
 });
+
+handleResize();
