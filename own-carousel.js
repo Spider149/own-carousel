@@ -6,6 +6,8 @@ Object.prototype.ownCarousel = function (options) {
         responsive = {},
         draggable = true,
         mouseWheel = false,
+        autoplay = 0,
+        nav = true,
     } = options;
     //extract arguments
     this.carousel = this.querySelector(".own-carousel");
@@ -30,20 +32,17 @@ Object.prototype.ownCarousel = function (options) {
             -this.index * this.step
         }px,0,0)`;
         for (let i = 0; i < this.itemPerRow; i++) {
-            this.carousel.insertAdjacentHTML(
-                "beforeend",
-                this.carousel.children[i].outerHTML
+            let cloneNode = this.carouselItem[i].cloneNode(true);
+            this.carousel.insertAdjacentElement("beforeend", cloneNode);
+        }
+        let count = 0;
+        while (count != this.itemPerRow) {
+            let cloneNode = this.carouselItem[this.numberOfItem - 1].cloneNode(
+                true
             );
+            this.carousel.insertAdjacentElement("afterbegin", cloneNode);
+            count++;
         }
-        let add = "";
-        for (
-            let i = this.numberOfItem - this.itemPerRow;
-            i < this.numberOfItem;
-            i++
-        ) {
-            add += this.carousel.children[i].outerHTML;
-        }
-        this.carousel.insertAdjacentHTML("afterbegin", add);
     }
 
     this.translateSlide = () => {
@@ -95,12 +94,14 @@ Object.prototype.ownCarousel = function (options) {
         }
     };
 
-    this.querySelector(".control__prev").addEventListener("click", () => {
-        this.moveSlide(-1);
-    });
-    this.querySelector(".control__next").addEventListener("click", () => {
-        this.moveSlide(1);
-    });
+    if (nav) {
+        this.querySelector(".control__prev").addEventListener("click", () => {
+            this.moveSlide(-1);
+        });
+        this.querySelector(".control__next").addEventListener("click", () => {
+            this.moveSlide(1);
+        });
+    }
 
     if (draggable) {
         //if draggable is true, add draggable-support event, variables,...
@@ -120,6 +121,10 @@ Object.prototype.ownCarousel = function (options) {
                 document.addEventListener("mouseup", dragEndHandle);
             }
             firstPos = currentPos;
+            if (autoplay) {
+                clearInterval(intervalId);
+                clearTimeout(timeoutId);
+            }
             //add necessary listener, style, reset first and current position
         };
 
@@ -168,8 +173,8 @@ Object.prototype.ownCarousel = function (options) {
                 temp -= this.step;
             }
             if (
-                (temp > 50 && firstPos - currentPos > 0) ||
-                (this.step - temp < 50 && firstPos - currentPos < 0)
+                (temp > 50 && firstPos - currentPos >= 0) ||
+                (this.step - temp < 50 && firstPos - currentPos <= 0)
             )
                 return Math.ceil(currentMove / this.step);
             return Math.floor(currentMove / this.step);
@@ -196,18 +201,33 @@ Object.prototype.ownCarousel = function (options) {
             }
             this.carousel.style.transition = "all 0.25s";
             this.translateSlide();
+            if (autoplay) {
+                timeoutId = setTimeout(() => {
+                    intervalId = setInterval(this.moveSlide, autoplay, 1);
+                }, 5000);
+            }
         };
 
         this.carouselOuter.addEventListener("mousedown", dragStartHandle);
         this.carouselOuter.addEventListener("touchstart", dragStartHandle);
         // i had to create carouselOuter because carousel will be hidden when slide is working
     }
+
     if (mouseWheel) {
         this.carouselOuter.addEventListener("wheel", (e) => {
             e.preventDefault();
             if (e.deltaY > 0) this.moveSlide(-1);
             else this.moveSlide(1);
         });
+    }
+
+    let intervalId;
+    let timeoutId;
+
+    if (autoplay) {
+        timeoutId = setTimeout(() => {
+            intervalId = setInterval(this.moveSlide, autoplay, 1);
+        }, 5000);
     }
 };
 
@@ -226,7 +246,8 @@ function handleResize() {
     let windowWidth = window.innerWidth;
     let flag = false;
     let crsContainer = document.querySelectorAll(".own-carousel__container");
-    Array.from(crsContainer).forEach((item) => {
+    let containerArray = Array.from(crsContainer);
+    containerArray.forEach((item) => {
         for (let property in item.responsive) {
             if (property >= windowWidth) {
                 item.itemPerRow = item.responsive[property][0];
@@ -245,7 +266,11 @@ function handleResize() {
             0;
         item.style.setProperty("--width", `${item.itemWidth}%`);
         item.style.setProperty("--margin", `${item.gapWidth}%`);
+    });
+    //divide into 2 phase to avoid wrong calculating for imgWidth
+    containerArray.forEach((item) => {
         item.imgWidth = item.carouselItem[0].getBoundingClientRect().width;
+        console.log(item.carouselItem[0].querySelector("img").width);
         item.step =
             item.imgWidth + (item.gapWidth / item.itemWidth) * item.imgWidth;
         //change important property for responsive

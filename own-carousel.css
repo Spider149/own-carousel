@@ -6,7 +6,6 @@
 .own-carousel__outer {
     position: relative;
     overflow: hidden;
-    margin: 0 auto;
 }
 
 .own-carousel{
@@ -25,14 +24,6 @@
     margin-left: var(--margin);
 }
 
-.own-carousel__item > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-}
 
-.own-carousel__control {
-    margin-top: 40px;
-    text-align: center;
-}
+
+

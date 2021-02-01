@@ -1,7 +1,23 @@
-.own-1 .own-carousel__outer {
+.own-carousel__container {
+    margin: 0 auto;
+}
+
+.own-1 {
     width: 90%;
 }
 
-.own-2 .own-carousel__outer {
+.own-2 {
     width: 80%;
+}
+
+.own-carousel__control {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.own-carousel__item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
 }
