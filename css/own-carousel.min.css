@@ -1,0 +1,1 @@
+:root{--width:0;--margin:0}.own-carousel__outer{position:relative;overflow:hidden;user-select:none}.own-carousel{display:flex}.own-carousel__item{flex-shrink:0;overflow:hidden;flex-basis:var(--width)}.own-carousel__item:not(:first-child){margin-left:var(--margin)}

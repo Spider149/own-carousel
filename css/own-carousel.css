@@ -6,6 +6,7 @@
 .own-carousel__outer {
     position: relative;
     overflow: hidden;
+    user-select: none;
 }
 
 .own-carousel{
@@ -13,17 +14,13 @@
 }
 
 .own-carousel__item {
-    user-select: none;
     flex-shrink: 0;
     overflow: hidden;
     flex-basis: var(--width);
-    min-height: 200px;
 }
 
 .own-carousel__item:not(:first-child) {
     margin-left: var(--margin);
 }
-
-
 
 

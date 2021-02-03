@@ -1,13 +1,14 @@
 Object.prototype.ownCarousel = function (options) {
     const {
-        itemPerRow,
-        itemWidth,
+        itemPerRow = 4,
+        itemWidth = 24,
         loop = true,
         responsive = {},
         draggable = true,
         mouseWheel = false,
         autoplay = 0,
-        nav = true,
+        stopAutoplayWhenHover = true,
+        nav = false,
     } = options;
     //extract arguments
     this.carousel = this.querySelector(".own-carousel");
@@ -103,6 +104,8 @@ Object.prototype.ownCarousel = function (options) {
         });
     }
 
+    let dragging = false;
+
     if (draggable) {
         //if draggable is true, add draggable-support event, variables,...
         let firstPos = (currentPos = 0);
@@ -125,6 +128,7 @@ Object.prototype.ownCarousel = function (options) {
                 clearInterval(intervalId);
                 clearTimeout(timeoutId);
             }
+            dragging = true;
             //add necessary listener, style, reset first and current position
         };
 
@@ -204,8 +208,9 @@ Object.prototype.ownCarousel = function (options) {
             if (autoplay) {
                 timeoutId = setTimeout(() => {
                     intervalId = setInterval(this.moveSlide, autoplay, 1);
-                }, 5000);
+                }, 2000);
             }
+            dragging = false;
         };
 
         this.carouselOuter.addEventListener("mousedown", dragStartHandle);
@@ -227,7 +232,20 @@ Object.prototype.ownCarousel = function (options) {
     if (autoplay) {
         timeoutId = setTimeout(() => {
             intervalId = setInterval(this.moveSlide, autoplay, 1);
-        }, 5000);
+        }, 3000);
+        if (stopAutoplayWhenHover) {
+            this.carouselOuter.addEventListener("mouseenter", () => {
+                clearTimeout(timeoutId);
+                clearInterval(intervalId);
+            });
+            this.carouselOuter.addEventListener("mouseleave", () => {
+                if (!dragging) {
+                    timeoutId = setTimeout(() => {
+                        intervalId = setInterval(this.moveSlide, autoplay, 1);
+                    }, 2000);
+                }
+            });
+        }
     }
 };
 
@@ -242,7 +260,7 @@ function debounce(fn, delay) {
     };
 }
 
-function handleResize() {
+function responsive() {
     let windowWidth = window.innerWidth;
     let flag = false;
     let crsContainer = document.querySelectorAll(".own-carousel__container");
@@ -270,7 +288,6 @@ function handleResize() {
     //divide into 2 phase to avoid wrong calculating for imgWidth
     containerArray.forEach((item) => {
         item.imgWidth = item.carouselItem[0].getBoundingClientRect().width;
-        console.log(item.carouselItem[0].querySelector("img").width);
         item.step =
             item.imgWidth + (item.gapWidth / item.itemWidth) * item.imgWidth;
         //change important property for responsive
@@ -279,5 +296,5 @@ function handleResize() {
     });
 }
 
-window.addEventListener("resize", debounce(handleResize, 500));
+window.addEventListener("resize", debounce(responsive, 500));
 //reduce the number of execution for performance

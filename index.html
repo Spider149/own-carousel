@@ -4,93 +4,408 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Own Carousel</title>
-    <link href="reset.css" rel="stylesheet">
-    <link href="own-carousel.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <script src="own-carousel.min.js"></script>
+
+    <meta name="author" content="Le Trung Hieu">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
+    <link href="/css/reset.css" rel="stylesheet">
+    <link href="/css/setting.css" rel="stylesheet">
+    <link href="/css/own-carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+    <script src="/js/own-carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/go.min.js"></script>
 </head>
 <body>
-    <div class="own-carousel__container own-1">
-        <div class="own-carousel__outer">
-            <div class="own-carousel">
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=1" alt="">
+    <div class="wrapper">
+        <header class="header">
+            <a href="index.html">
+                <h1 class="header__logo">own-carousel.js</h1>
+            </a>
+            <nav class="header__nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#features">Features</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#demos">Demos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#installation">Installation</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#options">Options</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/owl-carousel-1.0.0.zip" download="own-carousel-1.0.0.zip">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="introduction section container" id="introduction">
+            <h2 class="introduction__heading heading">
+                Introduction
+            </h2>
+            <div class="introduction__content">
+                <p class="introduction__text">
+                    This is a dependency-free Vanilla JavaScript slider for vanillaJS's lover. It's lightweight (~6kb) and easy to use. 
+                </p>
+                <p class="introduction__text">
+                    Its core workings are similar to Owl Carousel, but it doesn't require jquery. 
+                    Currently it only provides some essential features of a slider and just support horizontal slider.
+                </p>
+            </div>
+        </section>
+        <section class="features section container" id="features">
+            <h2 class="features__heading heading">
+                Features
+            </h2>
+            <div class="own-carousel__container own-1">
+                <div class="own-carousel__outer">
+                    <div class="own-carousel">
+                        <div class="own-carousel__item">
+                            <h3>Loop</h3>
+                        </div>
+                        <div class="own-carousel__item">
+                            <h3>Drag/Swipe</h3>
+                        </div>
+                        <div class="own-carousel__item">
+                            <h3>Responsive</h3>
+                        </div>
+                        <div class="own-carousel__item">
+                            <h3>Autoplay</h3>
+                        </div>
+                        <div class="own-carousel__item">
+                            <h3>Wheel</h3>
+                        </div>
+                    </div>            
                 </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=2" alt="">
+            </div>
+        </section>
+        <section class="demos section container" id="demos">
+            <h2 class="demos__heading heading">
+                Demos
+            </h2>
+            <div class="own-carousel__container own-2">
+                <div class="own-carousel__outer">
+                    <div class="own-carousel">
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=1" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=2" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=3" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=4" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=5" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=6" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=7" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=8" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=9" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=10" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=11" alt="">
+                        </div>
+                        <div class="own-carousel__item">
+                            <img src="https://dummyimage.com/250/5cdb95&text=12" alt="">
+                        </div>
+                    </div>            
                 </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=3" alt="">
+                <div class="own-carousel__control">
+                    <button class="control__prev">&laquo;</button>
+                    <button class="control__next">&raquo;</button>
                 </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=4" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=5" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=6" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=7" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=8" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=9" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=10" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=11" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=12" alt="">
-                </div>
-            </div>            
-        </div>
-        <div class="own-carousel__control">
-            <button class="control__prev">&laquo;</button>
-            <button class="control__next">&raquo;</button>
-        </div>
-    </div>
-    <div class="own-carousel__container own-2">
-        <div class="own-carousel__outer">
-            <div class="own-carousel">
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=1" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=2" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=3" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=4" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=5" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=6" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=7" alt="">
-                </div>
-                <div class="own-carousel__item">
-                    <img src="https://dummyimage.com/600x400/000/fff&text=8" alt="">
-                </div>
-            </div>            
-        </div>
-        <div class="own-carousel__control">
-            <button class="control__prev">&laquo;</button>
-            <button class="control__next">&raquo;</button>
-        </div>
-    </div>
-    <script src="main.js"></script>
-</body>
+            </div>
+        </section>
+        <section class="installation section container" id="installation">
+            <h2 class="installation__heading heading">
+                Installation
+            </h2>
+            <div class="installation__content">
+                <h3>
+                    Include CSS file in your &lt;head&gt;
+                </h3>
+                <code class="html">
+                    &lt;link href=&quot;own-carousel.css&quot; rel=&quot;stylesheet&quot;&gt;
+                </code>
+                <h3>
+                    Include JS file in your &lt;head&gt;
+                </h3>
+                <code class="html">
+                    &lt;script src=&quot;own-carousel.js&quot;&gt;&lt;/script&gt;
+                </code>
+                <h3>
+                    HTML structure
+                </h3>
+                <pre class="html">
+                    <code>
+&lt;div class=&quot;own-carousel__container&quot;&gt;
+    &lt;div class=&quot;own-carousel__outer&quot;&gt;
+        &lt;div class=&quot;own-carousel&quot;&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+            &lt;div class=&quot;owl-carousel__item&quot;&gt;Your content&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="own-carousel__control"&gt;
+        &lt;button class="control__prev"&gt;&laquo;&lt;/button&gt;
+        &lt;button class="control__next"&gt;&raquo;&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
+&lt;!-- You have to follow this HTML structure and class name --&gt;
+&lt;!--own-carousel__control is optional, but if you want to have a navigation for your carousel, follow this structure, add another class and custom if you want --&gt;
+&lt;!-- You can add another class name in "own-carousel__container" to add margin, padding, width,... --&gt;
+&lt;!-- You can also add another class name in "own-carousel__item" to custom your carousel items --&gt;
+                    </code>
+                </pre>
+                <h3>
+                    And call the function in your main.js (or another name 😆) after your &lt;body&gt; tag
+                </h3>
+                <pre class="javascript">
+                    <code>
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".own-carousel__container").ownCarousel({
+        itemPerRow:5, 
+        itemWidth:19,
+        responsive: {
+            1000: [4, 24],
+            800: [3, 33],
+            600: [2, 49],
+            400: [1, 100]
+        },
+    });
+    responsive();
+});
+
+//If you have more than 2 carousel in your page, just add another class in your "own-carousel__container" div,
+//like "own-1", "own-2",... for example, and change "own-carousel__container" to "own-1", "own-2",... in querySelector.
+//Don't forget to add responsive() after ownCarousel(), it's necessary for determine which responsive option is suitable after loading the page, 
+//if you don't need responsive and responsive property is an empty object, then you don't need to add responsive(). You only need to call this
+//function once whether you have more than 1 carousel in your page.
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section class="options section container" id="options">
+            <h2 class="options__heading heading">
+                Options
+            </h2>
+            <ul class="options__list">
+                <li class="options__item">
+                    <h3>itemPerRow</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Number</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>4</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>This library is designed for desktop-first, this is the number of items you want to see in largest screen.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>itemWidth</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Number</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>24</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>This is the width (in percent) of each carousel item.</p>
+                            <p>The gap between each item will be calculated automatically.</p>
+                            <p>For example: If your itemPerRow is 4 and itemWidth is 24, then the gap between each item will be (100-24*4)/3. Don't let your gap negative!</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>loop</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Boolean</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>true</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>Infinite loop your carousel, clone some items in the beginning and the end of your carousel to make loop effect.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>responsive</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Object</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>{}</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>This is a little bit complicated structure you have to follow.</p>
+                            <pre>
+                                <code class="javascript">
+responsive: {
+    1000: [4, 24], //breakpoint &lt;=1000px
+    800: [3, 33], //breakpoint &lt;=800px
+    600: [2, 49], //breakpoint &lt;=600px
+    400: [1, 100] //breakpoint &lt;=400px
+}
+                                </code>
+                            </pre>
+                            <p>The value in array is itemPerRow and itemWidth of corresponding screen. In this case, the itemPerRow and itemWidth in ownCarousel() is for &gt; 1000px screen.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>draggable</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Boolean</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>true</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>Touch and Mouse drag enabled.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>mouseWheel</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Boolean</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>false</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>Mouse wheel to move your carousel.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>autoplay</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Number</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>0</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>If the value is 0, auto play is off. If the value is a positive number, it will be the time between 2 moves of your carousel.</p>
+                            <p>If you start dragging, autoplay will be paused. When you finish dragging, autoplay will be restarted in 2 seconds.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>stopAutoplayWhenHover</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Boolean</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>true</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>If autoplay is on, you may need this option. If the value is true (default), the autoplay will be paused when you hover on this carousel.</p>
+                            <p>When you finish hovering, autoplay will be restarted in 2 seconds.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>nav</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Boolean</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>false</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>If you used "own-carousel__control" in your HTML structure to add navigation, set nav's value to true to add functionality to your nav's button.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="github section container" id="github">
+            <h2 class="github__heading heading">
+                Github
+            </h2>
+            <div class="github__content">
+                <p>If you like this carousel, give me 1 star on github 🤩.</p>
+                <a href="https://github.com/Spider149/own-carousel">Github</a>
+            </div>
+        </section>
+        <footer class="footer">
+            <h5>
+                Developed by <a href="https://github.com/Spider149">Spider149</a>
+            </h5>
+        </footer>
+    </div>
+</body>
+<script src="/js/main.js"></script>
 </html>
