@@ -49,6 +49,11 @@
                     </li>
                 </ul>
             </nav>
+            <div class="menu__button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
         <section class="introduction section container" id="introduction">
             <h2 class="introduction__heading heading">
@@ -56,7 +61,7 @@
             </h2>
             <div class="introduction__content">
                 <p class="introduction__text">
-                    This is a dependency-free Vanilla JavaScript slider for vanillaJS's lover. It's lightweight (~6kb) and easy to use. 
+                    This is a dependency-free Vanilla JavaScript slider for vanillaJS's lover. It's lightweight (~7kb) and easy to use. 
                 </p>
                 <p class="introduction__text">
                     Its core workings are similar to Owl Carousel, but it doesn't require jquery. 
@@ -150,13 +155,13 @@
                     Include CSS file in your &lt;head&gt;
                 </h3>
                 <code class="html">
-                    &lt;link href=&quot;own-carousel.css&quot; rel=&quot;stylesheet&quot;&gt;
+                    &lt;link href=&quot;own-carousel.min.css&quot; rel=&quot;stylesheet&quot;&gt;
                 </code>
                 <h3>
                     Include JS file in your &lt;head&gt;
                 </h3>
                 <code class="html">
-                    &lt;script src=&quot;own-carousel.js&quot;&gt;&lt;/script&gt;
+                    &lt;script src=&quot;own-carousel.min.js&quot;&gt;&lt;/script&gt;
                 </code>
                 <h3>
                     HTML structure
@@ -183,8 +188,8 @@
 &lt;/div&gt;
 
 &lt;!-- You have to follow this HTML structure and class name --&gt;
-&lt;!--own-carousel__control is optional, but if you want to have a navigation for your carousel, follow this structure, add another class and custom if you want --&gt;
-&lt;!-- You can add another class name in "own-carousel__container" to add margin, padding, width,... --&gt;
+&lt;!-- own-carousel__control is optional, but if you want to have a navigation for your carousel, follow this structure, add another class and custom if you want --&gt;
+&lt;!-- You can add another class name in "own-carousel__container" to add margin, padding, width,... for your slider --&gt;
 &lt;!-- You can also add another class name in "own-carousel__item" to custom your carousel items --&gt;
                     </code>
                 </pre>
@@ -253,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <h4>Description: </h4>
                             <p>This is the width (in percent) of each carousel item.</p>
                             <p>The gap between each item will be calculated automatically.</p>
-                            <p>For example: If your itemPerRow is 4 and itemWidth is 24, then the gap between each item will be (100-24*4)/3. Don't let your gap negative!</p>
+                            <p>For example: If your itemPerRow is 4 and itemWidth is 24, then the gap between each item will be (100-24*4)/3. Don't let your gap be negative!</p>
                         </div>
                     </div>
                 </li>
@@ -349,7 +354,7 @@ responsive: {
                         </div>
                         <div class="options__row desc">
                             <h4>Description: </h4>
-                            <p>If the value is 0, auto play is off. If the value is a positive number, it will be the time between 2 moves of your carousel.</p>
+                            <p>If the value is 0, auto play is off. If the value is a positive number, it will be the time (in millisecond) between 2 moves of your carousel.</p>
                             <p>If you start dragging, autoplay will be paused. When you finish dragging, autoplay will be restarted in 2 seconds.</p>
                         </div>
                     </div>
@@ -397,7 +402,11 @@ responsive: {
             </h2>
             <div class="github__content">
                 <p>If you like this carousel, give me 1 star on github 🤩.</p>
-                <a href="https://github.com/Spider149/own-carousel">Github</a>
+                <p>Use github to report bug.</p>
+                <a href="https://github.com/Spider149/own-carousel">
+                    Github
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
             </div>
         </section>
         <footer class="footer">
