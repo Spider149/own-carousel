@@ -104,14 +104,11 @@ Object.prototype.ownCarousel = function (options) {
         });
     }
 
-    let dragging = false;
-
     if (draggable) {
         //if draggable is true, add draggable-support event, variables,...
         let firstPos = (currentPos = 0);
 
         let dragStartHandle = (e) => {
-            e.preventDefault();
             this.carousel.style.transition = "none";
             if (e.type === "touchstart") {
                 currentPos = e.touches[0].clientX;
@@ -124,12 +121,11 @@ Object.prototype.ownCarousel = function (options) {
                 document.addEventListener("mouseup", dragEndHandle);
             }
             firstPos = currentPos;
+            //add necessary listener, style, reset first and current position
             if (autoplay) {
                 clearInterval(intervalId);
                 clearTimeout(timeoutId);
             }
-            dragging = true;
-            //add necessary listener, style, reset first and current position
         };
 
         let dragHandle = (e) => {
@@ -206,11 +202,12 @@ Object.prototype.ownCarousel = function (options) {
             this.carousel.style.transition = "all 0.25s";
             this.translateSlide();
             if (autoplay) {
+                clearInterval(intervalId);
+                clearTimeout(timeoutId);
                 timeoutId = setTimeout(() => {
                     intervalId = setInterval(this.moveSlide, autoplay, 1);
                 }, 2000);
             }
-            dragging = false;
         };
 
         this.carouselOuter.addEventListener("mousedown", dragStartHandle);
@@ -239,11 +236,11 @@ Object.prototype.ownCarousel = function (options) {
                 clearInterval(intervalId);
             });
             this.carouselOuter.addEventListener("mouseleave", () => {
-                if (!dragging) {
-                    timeoutId = setTimeout(() => {
-                        intervalId = setInterval(this.moveSlide, autoplay, 1);
-                    }, 2000);
-                }
+                clearInterval(intervalId);
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    intervalId = setInterval(this.moveSlide, autoplay, 1);
+                }, 2000);
             });
         }
     }
