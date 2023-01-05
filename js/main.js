@@ -4,24 +4,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // responsive
-    let menuButton=document.querySelector(".menu__button");
-    let menu=document.querySelector(".header__nav");
-    let body=document.getElementsByTagName("body")[0];
+    let menuButton = document.querySelector(".menu__button");
+    let menu = document.querySelector(".header__nav");
+    let body = document.getElementsByTagName("body")[0];
 
-    menuButton.addEventListener("click",function(){
+    menuButton.addEventListener("click", function () {
         menuButton.classList.toggle("open");
         menu.classList.toggle("open");
         body.classList.toggle("no-scroll");
-    })
+    });
 
-    window.addEventListener("click",function(event){
-        if(!event.target.classList.contains("header__nav") && menu.classList.contains("open") 
-        && !event.target.classList.contains("menu__button") && !event.target.parentNode.classList.contains("menu__button")) {
-          menu.classList.toggle("open");
-          menuButton.classList.toggle("open");
-          body.classList.toggle("no-scroll");
+    window.addEventListener("click", function (event) {
+        if (
+            !event.target.classList.contains("header__nav") &&
+            menu.classList.contains("open") &&
+            !event.target.classList.contains("menu__button") &&
+            !event.target.parentNode.classList.contains("menu__button")
+        ) {
+            menu.classList.toggle("open");
+            menuButton.classList.toggle("open");
+            body.classList.toggle("no-scroll");
         }
-    })
+    });
 
     // ----- //
     document.querySelector(".own-1").ownCarousel({

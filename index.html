@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,7 @@
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
+
 <body>
     <div class="wrapper">
         <header class="header">
@@ -47,7 +49,7 @@
                         <a href="#options">Options</a>
                     </li>
                     <li class="nav__item">
-                        <a href="own-carousel-1.0.0.zip" download="own-carousel-1.0.0.zip">Download</a>
+                        <a href="own-carousel-1.0.1.zip" download="own-carousel-1.0.1.zip">Download</a>
                     </li>
                 </ul>
             </nav>
@@ -63,10 +65,11 @@
             </h2>
             <div class="introduction__content">
                 <p class="introduction__text">
-                    This is a dependency-free Vanilla JavaScript slider for vanillaJS's lover. It's lightweight (~7kb) and easy to use. 
+                    This is a dependency-free Vanilla JavaScript slider for vanillaJS's lover. It's lightweight (~7kb)
+                    and easy to use.
                 </p>
                 <p class="introduction__text">
-                    Its core workings are similar to Owl Carousel, but it doesn't require jquery. 
+                    Its core workings are similar to Owl Carousel, but it doesn't require jquery.
                     Currently it only provides some essential features of a slider and just support horizontal slider.
                 </p>
             </div>
@@ -93,7 +96,7 @@
                         <div class="own-carousel__item">
                             <h3>Wheel</h3>
                         </div>
-                    </div>            
+                    </div>
                 </div>
             </div>
         </section>
@@ -140,7 +143,7 @@
                         <div class="own-carousel__item">
                             <img src="https://dummyimage.com/250/5cdb95&text=12" alt="">
                         </div>
-                    </div>            
+                    </div>
                 </div>
                 <div class="own-carousel__control">
                     <button class="control__prev">&laquo;</button>
@@ -241,7 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="options__row desc">
                             <h4>Description: </h4>
-                            <p>This library is designed for desktop-first, this is the number of items you want to see in largest screen.</p>
+                            <p>This library is designed for desktop-first, this is the number of items you want to see
+                                in largest screen.</p>
                         </div>
                     </div>
                 </li>
@@ -260,7 +264,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             <h4>Description: </h4>
                             <p>This is the width (in percent) of each carousel item.</p>
                             <p>The gap between each item will be calculated automatically.</p>
-                            <p>For example: If your itemPerRow is 4 and itemWidth is 24, then the gap between each item will be (100-24*4)/3. Don't let your gap be negative!</p>
+                            <p>For example: If your itemPerRow is 4 and itemWidth is 24, then the gap between each item
+                                will be (100-24*4)/3. Don't let your gap be negative!</p>
                         </div>
                     </div>
                 </li>
@@ -277,7 +282,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="options__row desc">
                             <h4>Description: </h4>
-                            <p>Infinite loop your carousel, clone some items in the beginning and the end of your carousel to make loop effect.</p>
+                            <p>Infinite loop your carousel, clone some items in the beginning and the end of your
+                                carousel to make loop effect.</p>
                         </div>
                     </div>
                 </li>
@@ -305,7 +311,8 @@ responsive: {
 }
                                 </code>
                             </pre>
-                            <p>The value in array is itemPerRow and itemWidth of corresponding screen. In this case, the itemPerRow and itemWidth in ownCarousel() is for &gt; 1000px screen.</p>
+                            <p>The value in array is itemPerRow and itemWidth of corresponding screen. In this case, the
+                                itemPerRow and itemWidth in ownCarousel() is for &gt; 1000px screen.</p>
                         </div>
                     </div>
                 </li>
@@ -356,8 +363,10 @@ responsive: {
                         </div>
                         <div class="options__row desc">
                             <h4>Description: </h4>
-                            <p>If the value is 0, auto play is off. If the value is a positive number, it will be the time (in millisecond) between 2 moves of your carousel.</p>
-                            <p>If you start dragging, autoplay will be paused. When you finish dragging, autoplay will be restarted in 2 seconds.</p>
+                            <p>If the value is 0, auto play is off. If the value is a positive number, it will be the
+                                time (in millisecond) between 2 moves of your carousel.</p>
+                            <p>If you start dragging, autoplay will be paused. When you finish dragging, autoplay will
+                                be restarted in 2 seconds.</p>
                         </div>
                     </div>
                 </li>
@@ -374,7 +383,8 @@ responsive: {
                         </div>
                         <div class="options__row desc">
                             <h4>Description: </h4>
-                            <p>If autoplay is on, you may need this option. If the value is true (default), the autoplay will be paused when you hover on this carousel.</p>
+                            <p>If autoplay is on, you may need this option. If the value is true (default), the autoplay
+                                will be paused when you hover on this carousel.</p>
                             <p>When you finish hovering, autoplay will be restarted in 2 seconds.</p>
                         </div>
                     </div>
@@ -392,7 +402,25 @@ responsive: {
                         </div>
                         <div class="options__row desc">
                             <h4>Description: </h4>
-                            <p>If you used "own-carousel__control" in your HTML structure to add navigation, set nav's value to true to add functionality to your nav's button.</p>
+                            <p>If you used "own-carousel__control" in your HTML structure to add navigation, set nav's
+                                value to true to add functionality to your nav's button.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="options__item">
+                    <h3>isRTL</h3>
+                    <div class="options__desc">
+                        <div class="options__row">
+                            <h4>Type: </h4>
+                            <code>Boolean</code>
+                        </div>
+                        <div class="options__row">
+                            <h4>Default: </h4>
+                            <code>false</code>
+                        </div>
+                        <div class="options__row desc">
+                            <h4>Description: </h4>
+                            <p>Autoplay direction</p>
                         </div>
                     </div>
                 </li>
@@ -404,12 +432,15 @@ responsive: {
             </h2>
             <div class="github__content">
                 <p>If you like this carousel, give me 1 star on github 🤩.</p>
-                <a class="github-button" href="https://github.com/spider149/own-carousel" data-icon="octicon-star" 
-                data-size="large" data-show-count="true" aria-label="Star spider149/own-carousel on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/spider149/own-carousel" data-icon="octicon-star"
+                    data-size="large" data-show-count="true" aria-label="Star spider149/own-carousel on GitHub">Star</a>
                 <p>Use github to report bug.</p>
                 <a href="https://github.com/Spider149/own-carousel">
                     Github
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
                 </a>
             </div>
         </section>
@@ -421,4 +452,5 @@ responsive: {
     </div>
 </body>
 <script src="js/main.js"></script>
+
 </html>

@@ -9,6 +9,7 @@ Object.prototype.ownCarousel = function (options) {
         autoplay = 0,
         stopAutoplayWhenHover = true,
         nav = false,
+        isRTL = false,
     } = options;
     //extract arguments
     this.carousel = this.querySelector(".own-carousel");
@@ -25,6 +26,7 @@ Object.prototype.ownCarousel = function (options) {
     this.numberOfItem = this.carouselItem.length;
     this.step =
         this.imgWidth + (this.gapWidth / this.itemWidth) * this.imgWidth; //calculate the step to translate
+    this.stepToMoveAutoplay = isRTL ? -1 : 1;
 
     if (loop) {
         //if loop is true, clone carousel item
@@ -38,9 +40,8 @@ Object.prototype.ownCarousel = function (options) {
         }
         let count = 0;
         while (count != this.itemPerRow) {
-            let cloneNode = this.carouselItem[this.numberOfItem - 1].cloneNode(
-                true
-            );
+            let cloneNode =
+                this.carouselItem[this.numberOfItem - 1].cloneNode(true);
             this.carousel.insertAdjacentElement("afterbegin", cloneNode);
             count++;
         }
@@ -205,7 +206,11 @@ Object.prototype.ownCarousel = function (options) {
                 clearInterval(intervalId);
                 clearTimeout(timeoutId);
                 timeoutId = setTimeout(() => {
-                    intervalId = setInterval(this.moveSlide, autoplay, 1);
+                    intervalId = setInterval(
+                        this.moveSlide,
+                        autoplay,
+                        this.stepToMoveAutoplay
+                    );
                 }, 2000);
             }
         };
@@ -228,7 +233,11 @@ Object.prototype.ownCarousel = function (options) {
 
     if (autoplay) {
         timeoutId = setTimeout(() => {
-            intervalId = setInterval(this.moveSlide, autoplay, 1);
+            intervalId = setInterval(
+                this.moveSlide,
+                autoplay,
+                this.stepToMoveAutoplay
+            );
         }, 3000);
         if (stopAutoplayWhenHover) {
             this.carouselOuter.addEventListener("mouseenter", () => {
@@ -239,7 +248,11 @@ Object.prototype.ownCarousel = function (options) {
                 clearInterval(intervalId);
                 clearTimeout(timeoutId);
                 timeoutId = setTimeout(() => {
-                    intervalId = setInterval(this.moveSlide, autoplay, 1);
+                    intervalId = setInterval(
+                        this.moveSlide,
+                        autoplay,
+                        this.stepToMoveAutoplay
+                    );
                 }, 2000);
             });
         }
