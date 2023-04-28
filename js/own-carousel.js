@@ -239,7 +239,7 @@ Object.prototype.ownCarousel = function (options) {
               autoplay,
               this.stepToMoveAutoplay
           );
-      }, 3000);
+      }, autoplay);
       if (stopAutoplayWhenHover) {
           this.carouselOuter.addEventListener("mouseenter", () => {
               clearTimeout(timeoutId);
